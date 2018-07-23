@@ -1,0 +1,31 @@
+{
+  "name": "vscode-teddy-snippets",
+  "displayName": "Teddy Snippets",
+  "description": "Snippets for the Teddy templating language",
+  "version": "1.0.0",
+  "publisher": "lannonbr",
+  "engines": {
+    "vscode": "^1.20.0"
+  },
+  "license": "view in LICENSE.md",
+  "keywords": [
+    "Teddy",
+    "HTML",
+    "snippets"
+  ],
+  "categories": [
+    "Snippets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lannonbr/vscode-teddy-snippets.git"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "html",
+        "path": "./snippets/teddy.json"
+      }
+    ]
+  }
+}

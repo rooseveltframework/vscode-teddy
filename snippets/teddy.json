@@ -1,0 +1,64 @@
+{
+  "Include": {
+    "prefix": "include",
+    "body": "<include src='$1'>$2</include>",
+    "description": "Teddy Include statement. Import external html templates"
+  },
+  "Include-Noparse": {
+    "prefix": "include-noparse",
+    "body": "<include src='$1' noparse>$2</include>",
+    "description":
+      "Teddy Include statement which will not be compiled on render."
+  },
+  "Arg": {
+    "prefix": "arg",
+    "body": "<arg>$1</arg>",
+    "description": "Teddy template argument"
+  },
+  "If": {
+    "prefix": "if",
+    "body": "<if $1>\n\t$2\n</if>",
+    "description": "if block"
+  },
+  "else": {
+    "prefix": "else",
+    "body": "<else>\n\t$1\n</else>",
+    "description": "else block"
+  },
+  "If-Else": {
+    "prefix": "ifelse",
+    "body": ["<if $1>\n\t$2\n</if>", "<else>\n\t$3\n</else>"],
+    "description": "If Else block"
+  },
+  "unless": {
+    "prefix": "unless",
+    "body": "<unless $1>\n\t$2\n</unless>",
+    "description": "unless block. Check for the non-presence of something"
+  },
+  "elseif": {
+    "prefix": "elseif",
+    "body": "<elseif $1>\n\t$2\n</elseif>",
+    "description": "else-if block"
+  },
+  "elseunless": {
+    "prefix": "elseunless",
+    "body": "<elseunless $1>\n\t$2\n</elseunless>",
+    "description": "else-unless block. Check for the non-presence of something"
+  },
+  "inlineif": {
+    "prefix": "inlineif",
+    "body": "if-$1 true=\"$2\" false=\"$3\"",
+    "description": "inline version of <if>"
+  },
+  "loop": {
+    "prefix": "loop",
+    "body": "<loop through='$1' val='$2'>\n\t$3\n</loop>",
+    "description": "loop block. Loop through an array of data"
+  },
+  "loopkey": {
+    "prefix": "loopkey",
+    "body": "<loop through='$1' key='$2' val='$3'>\n\t$4\n</loop>",
+    "description":
+      "loop block with an index value. Loop through an array of data"
+  }
+}
