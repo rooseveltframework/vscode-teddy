@@ -2,7 +2,7 @@
   "name": "vscode-teddy-snippets",
   "displayName": "Teddy Snippets",
   "description": "Snippets for the Teddy templating language",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "lannonbr",
   "engines": {
     "vscode": "^1.20.0"
