@@ -13,7 +13,7 @@ The included snippets include the following features:
 - `<else>`
 - `<unless>`
 - `<elseunless>`
-- `inline-if statement`
+- `one-line if statement`
 - `<loop>`
 - `<cache>`
 
