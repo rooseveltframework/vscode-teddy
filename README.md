@@ -1,4 +1,4 @@
-# vscode-teddy-snippets
+# vscode-teddy
 
 Snippets for the [Teddy templating engine](https://github.com/rooseveltframework/teddy) for Visual Studio Code.
 
@@ -13,5 +13,13 @@ The included snippets include the following features:
 - `<else>`
 - `<unless>`
 - `<elseunless>`
-- `inline-if statement`
+- `one-line if statement`
 - `<loop>`
+- `<cache>`
+
+## Development
+
+- Install dependencies: `npm ci`
+- Create extension: `vsce package`
+- Install extension: `code --install-extension *.vsix`
+- Cycling through changes to the extension quickly: `vsce package && code --install-extension *.vsix && code`
