@@ -1,10 +1,18 @@
-# Change Log
-All notable changes to the "vscode-teddy-snippets" extension will be documented in this file.
+# vscode-teddy changelog
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## Next version
+
+- Put your changes here...
+
+## 1.0.2
+
+- Added support for `<cache>` element.
+- Various refactoring.
 
 ## 1.0.1
-- Added icon & updated README
+
+- Added icon and updated README.
 
 ## 1.0.0
-- Initial release
+
+- Initial release.

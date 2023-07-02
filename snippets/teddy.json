@@ -1,64 +1,82 @@
 {
-  "Include": {
+  "<include …>": {
     "prefix": "include",
     "body": "<include src='$1'>$2</include>",
-    "description": "Teddy Include statement. Import external html templates"
+    "description": "<include> element. Import external templates."
   },
-  "Include-Noparse": {
-    "prefix": "include-noparse",
-    "body": "<include src='$1' noparse>$2</include>",
-    "description":
-      "Teddy Include statement which will not be compiled on render."
-  },
-  "Arg": {
+  "<arg>": {
     "prefix": "arg",
     "body": "<arg>$1</arg>",
-    "description": "Teddy template argument"
+    "description": "<include> <arg> argument."
   },
-  "If": {
+  "<if …>": {
     "prefix": "if",
     "body": "<if $1>\n\t$2\n</if>",
-    "description": "if block"
+    "description": "<if> block."
   },
-  "else": {
+  "<else>": {
     "prefix": "else",
     "body": "<else>\n\t$1\n</else>",
-    "description": "else block"
+    "description": "<else> block."
   },
-  "If-Else": {
+  "<if …><else>": {
     "prefix": "ifelse",
     "body": ["<if $1>\n\t$2\n</if>", "<else>\n\t$3\n</else>"],
-    "description": "If Else block"
+    "description": "<if> <else> block."
   },
-  "unless": {
+  "<unless …>": {
     "prefix": "unless",
     "body": "<unless $1>\n\t$2\n</unless>",
-    "description": "unless block. Check for the non-presence of something"
+    "description": "<unless> block. Check for the non-presence of something."
   },
-  "elseif": {
+  "<elseif …>": {
     "prefix": "elseif",
     "body": "<elseif $1>\n\t$2\n</elseif>",
-    "description": "else-if block"
+    "description": "<elseif> block."
   },
-  "elseunless": {
+  "<elseunless …>": {
     "prefix": "elseunless",
     "body": "<elseunless $1>\n\t$2\n</elseunless>",
-    "description": "else-unless block. Check for the non-presence of something"
+    "description": "<elseunless> block. Check for the non-presence of something."
   },
-  "inlineif": {
-    "prefix": "inlineif",
+  "if-…": {
+    "prefix": "onelineif",
     "body": "if-$1 true=\"$2\" false=\"$3\"",
-    "description": "inline version of <if>"
+    "description": "One-line version of <if>."
   },
-  "loop": {
+  "<loop …>": {
     "prefix": "loop",
     "body": "<loop through='$1' val='$2'>\n\t$3\n</loop>",
-    "description": "loop block. Loop through an array of data"
+    "description": "<loop> block. Loop through an array or object of data."
   },
-  "loopkey": {
+  "<loop …> with key": {
     "prefix": "loopkey",
     "body": "<loop through='$1' key='$2' val='$3'>\n\t$4\n</loop>",
-    "description":
-      "loop block with an index value. Loop through an array of data"
+    "description": "<loop> block with a key attribute. Loop through an array or object of data."
+  },
+  "<cache>": {
+    "prefix": "cache",
+    "body": "<cache name='$1'>\n\t$2\n</cache>",
+    "description": "<cache> block. Cache template partial."
+  },
+  "<cache> with key": {
+    "prefix": "cachekey",
+    "body": "<cache name='$1' key='$2'>\n\t$3\n</cache>",
+    "description": "<cache> block with a key attribute. Cache template partial."
+  },
+  "<cache> with maxAge": {
+    "prefix": "cachemaxage",
+    "body": "<cache name='$1' key='$2' maxAge='$3'>\n\t$4\n</cache>",
+    "description": "<cache> block with key and maxAge attributes. Cache template partial."
+  },
+  "<cache> with maxCaches": {
+    "prefix": "cachemaxcaches",
+    "body": "<cache name='$1' key='$2' maxCaches='$3'>\n\t$4\n</cache>",
+    "description": "<cache> block with key and maxCaches attributes. Cache template partial."
+  },
+  "<cache> with everything": {
+    "prefix": "cacheall",
+    "body": "<cache name='$1' key='$2' maxAge='$3' maxCaches='$4'>\n\t$5\n</cache>",
+    "description": "<cache> block with key, maxAge, and maxCaches attributes. Cache template partial."
   }
 }

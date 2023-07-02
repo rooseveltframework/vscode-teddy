@@ -15,3 +15,11 @@ The included snippets include the following features:
 - `<elseunless>`
 - `inline-if statement`
 - `<loop>`
+- `<cache>`
+
+## Development
+
+- Install dependencies: `npm ci`
+- Create extension: `vsce package`
+- Install extension: `code --install-extension *.vsix`
+- Cycling through changes to the extension quickly: `vsce package && code --install-extension *.vsix && code`
