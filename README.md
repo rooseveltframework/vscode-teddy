@@ -1,4 +1,4 @@
-# vscode-teddy-snippets
+# vscode-teddy
 
 Snippets for the [Teddy templating engine](https://github.com/rooseveltframework/teddy) for Visual Studio Code.
 

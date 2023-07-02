@@ -1,7 +1,7 @@
 {
-  "name": "vscode-teddy-snippets",
-  "displayName": "Teddy Snippets",
-  "description": "Snippets for the Teddy templating language",
+  "name": "vscode-teddy",
+  "displayName": "Teddy",
+  "description": "Support for the Teddy templating language in VS Code",
   "author": "Roosevelt Framework Team <rooseveltframework@gmail.com>",
   "contributors": [
     {
