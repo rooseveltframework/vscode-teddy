@@ -12,7 +12,7 @@
   "version": "1.0.2",
   "publisher": "RooseveltFrameworkTeam",
   "engines": {
-    "vscode": "^1.20.0"
+    "vscode": "^2023.0.0"
   },
   "license": "CC-BY-4.0",
   "icon": "icon.png",
