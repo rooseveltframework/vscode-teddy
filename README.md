@@ -1,10 +1,8 @@
 # vscode-teddy
 
-Snippets for the [Teddy templating engine](https://github.com/rooseveltframework/teddy) for Visual Studio Code.
+Visual Studio Code extension for the [Teddy templating engine](https://github.com/rooseveltframework/teddy).
 
-See Teddy's GitHub page on [how to write Teddy templates](https://github.com/rooseveltframework/teddy#how-to-write-teddy-templates).
-
-The included snippets include the following features:
+Snippets are available for:
 
 - `<include>`
 - `<arg>`
