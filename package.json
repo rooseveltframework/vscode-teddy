@@ -1,7 +1,7 @@
 {
   "name": "vscode-teddy",
   "displayName": "Teddy",
-  "description": "Support for the Teddy templating language in VS Code",
+  "description": "🧸 Visual Studio Code extension for the Teddy templating engine.",
   "author": "Roosevelt Framework Team <rooseveltframework@gmail.com>",
   "contributors": [
     {
