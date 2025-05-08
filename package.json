@@ -14,6 +14,7 @@
   "engines": {
     "vscode": "^1.20.0"
   },
+  "homepage": "https://rooseveltframework.org/docs/teddy/latest",
   "license": "CC-BY-4.0",
   "icon": "icon.png",
   "categories": [
