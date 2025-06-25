@@ -29,7 +29,7 @@
     ]
   },
   "devDependencies": {
-    "@vscode/vsce": "2.29.0"
+    "@vscode/vsce": "3.6.0"
   },
   "repository": {
     "type": "git",
