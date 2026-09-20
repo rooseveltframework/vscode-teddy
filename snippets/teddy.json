@@ -1,82 +1,395 @@
 {
+  "{… |s}": {
+    "prefix": "unescaped",
+    "body": "{$1|s}",
+    "description": "Variable with the |s flag. Suppress escaping of HTML entities."
+  },
+  "{… |p}": {
+    "prefix": "unparsed",
+    "body": "{$1|p}",
+    "description": "Variable with the |p flag. Render the variable, but do not parse its contents."
+  },
+  "<escape>": {
+    "prefix": [
+      "escape",
+      "<escape"
+    ],
+    "body": "<escape>$1</escape>",
+    "description": "<escape> element. Render markup as text."
+  },
+  "<!--# … -->": {
+    "prefix": [
+      "escapecomment",
+      "<escapecomment"
+    ],
+    "body": "<!--#$1-->",
+    "description": "Escape comment. Render markup as text."
+  },
+  "<!--! … -->": {
+    "prefix": [
+      "comment",
+      "<comment"
+    ],
+    "body": "<!--! $1 -->",
+    "description": "Server-side comment. Stripped at the compilation stage."
+  },
+  "{! … !}": {
+    "prefix": "curlycomment",
+    "body": "{! $1 !}",
+    "description": "Server-side comment. Stripped at the compilation stage."
+  },
+  "<inline css>": {
+    "prefix": [
+      "inlinecss",
+      "<inlinecss"
+    ],
+    "body": "<inline css=\"$1\"></inline>",
+    "description": "<inline> element. Render a variable's contents as inline CSS."
+  },
+  "<inline js>": {
+    "prefix": [
+      "inlinejs",
+      "<inlinejs"
+    ],
+    "body": "<inline js=\"$1\"></inline>",
+    "description": "<inline> element. Render a variable's contents as inline JS."
+  },
   "<include …>": {
-    "prefix": "include",
-    "body": "<include src='$1'>$2</include>",
+    "prefix": [
+      "include",
+      "<include"
+    ],
+    "body": "<include src=\"$1\">$2</include>",
     "description": "<include> element. Import external templates."
   },
-  "<arg>": {
-    "prefix": "arg",
-    "body": "<arg>$1</arg>",
-    "description": "<include> <arg> argument."
+  "<include …> with <arg …>": {
+    "prefix": [
+      "includearg",
+      "<includearg"
+    ],
+    "body": [
+      "<include src=\"$1\">",
+      "\t<arg $2>$3</arg>",
+      "</include>"
+    ],
+    "description": "<include> element with an <arg> argument. Import external templates."
+  },
+  "<include …> as a web component": {
+    "prefix": [
+      "includeas",
+      "<includeas"
+    ],
+    "body": "<include src=\"$1\" as=\"$2\">$3</include>",
+    "description": "<include> element rendered as a web component. Import external templates."
+  },
+  "<include …> as a web component with <arg …>": {
+    "prefix": [
+      "includeasarg",
+      "<includeasarg"
+    ],
+    "body": [
+      "<include src=\"$1\" as=\"$2\">",
+      "\t<arg $3>$4</arg>",
+      "</include>"
+    ],
+    "description": "<include> element rendered as a web component with an <arg> argument. Import external templates."
+  },
+  "<include …> as a hydrating web component": {
+    "prefix": [
+      "includehydrate",
+      "<includehydrate"
+    ],
+    "body": "<include src=\"$1\" as=\"$2\" hydrate=\"$3\">$4</include>",
+    "description": "<include> element rendered as a web component that is sent the model keys it names. Import external templates."
+  },
+  "<arg …>": {
+    "prefix": [
+      "arg",
+      "<arg"
+    ],
+    "body": "<arg $1>$2</arg>",
+    "description": "<include> <arg> argument. The argument name is required."
   },
   "<if …>": {
-    "prefix": "if",
-    "body": "<if $1>\n\t$2\n</if>",
-    "description": "<if> block."
+    "prefix": [
+      "if",
+      "<if"
+    ],
+    "body": [
+      "<if $1>",
+      "\t$2",
+      "</if>"
+    ],
+    "description": "<if> block. Check for the presence of something."
+  },
+  "<if …=\"…\">": {
+    "prefix": [
+      "ifvalue",
+      "<ifvalue"
+    ],
+    "body": [
+      "<if $1=\"$2\">",
+      "\t$3",
+      "</if>"
+    ],
+    "description": "<if> block. Check the value of something."
   },
   "<else>": {
-    "prefix": "else",
-    "body": "<else>\n\t$1\n</else>",
+    "prefix": [
+      "else",
+      "<else"
+    ],
+    "body": [
+      "<else>",
+      "\t$1",
+      "</else>"
+    ],
     "description": "<else> block."
   },
   "<if …><else>": {
-    "prefix": "ifelse",
-    "body": ["<if $1>\n\t$2\n</if>", "<else>\n\t$3\n</else>"],
+    "prefix": [
+      "ifelse",
+      "<ifelse"
+    ],
+    "body": [
+      "<if $1>",
+      "\t$2",
+      "</if>",
+      "<else>",
+      "\t$3",
+      "</else>"
+    ],
     "description": "<if> <else> block."
   },
-  "<unless …>": {
-    "prefix": "unless",
-    "body": "<unless $1>\n\t$2\n</unless>",
-    "description": "<unless> block. Check for the non-presence of something."
-  },
   "<elseif …>": {
-    "prefix": "elseif",
-    "body": "<elseif $1>\n\t$2\n</elseif>",
+    "prefix": [
+      "elseif",
+      "<elseif"
+    ],
+    "body": [
+      "<elseif $1>",
+      "\t$2",
+      "</elseif>"
+    ],
     "description": "<elseif> block."
   },
+  "<unless …>": {
+    "prefix": [
+      "unless",
+      "<unless"
+    ],
+    "body": [
+      "<unless $1>",
+      "\t$2",
+      "</unless>"
+    ],
+    "description": "<unless> block. Check for the non-presence of something."
+  },
+  "<unless …><else>": {
+    "prefix": [
+      "unlesselse",
+      "<unlesselse"
+    ],
+    "body": [
+      "<unless $1>",
+      "\t$2",
+      "</unless>",
+      "<else>",
+      "\t$3",
+      "</else>"
+    ],
+    "description": "<unless> <else> block."
+  },
   "<elseunless …>": {
-    "prefix": "elseunless",
-    "body": "<elseunless $1>\n\t$2\n</elseunless>",
+    "prefix": [
+      "elseunless",
+      "<elseunless"
+    ],
+    "body": [
+      "<elseunless $1>",
+      "\t$2",
+      "</elseunless>"
+    ],
     "description": "<elseunless> block. Check for the non-presence of something."
+  },
+  "<if … and …>": {
+    "prefix": [
+      "ifand",
+      "<ifand"
+    ],
+    "body": [
+      "<if $1 and $2>",
+      "\t$3",
+      "</if>"
+    ],
+    "description": "<if> block using the 'and' boolean logic operator."
+  },
+  "<if … or …>": {
+    "prefix": [
+      "ifor",
+      "<ifor"
+    ],
+    "body": [
+      "<if $1 or $2>",
+      "\t$3",
+      "</if>"
+    ],
+    "description": "<if> block using the 'or' boolean logic operator."
+  },
+  "<if … xor …>": {
+    "prefix": [
+      "ifxor",
+      "<ifxor"
+    ],
+    "body": [
+      "<if $1 xor $2>",
+      "\t$3",
+      "</if>"
+    ],
+    "description": "<if> block using the 'xor' boolean logic operator."
+  },
+  "<if not:…>": {
+    "prefix": [
+      "ifnot",
+      "<ifnot"
+    ],
+    "body": [
+      "<if not:$1>",
+      "\t$2",
+      "</if>"
+    ],
+    "description": "<if> block using the 'not:' boolean logic prefix."
   },
   "if-…": {
     "prefix": "onelineif",
-    "body": "if-$1 true=\"$2\" false=\"$3\"",
-    "description": "One-line version of <if>."
+    "body": "if-$1 true='$2' false='$3'",
+    "description": "One-line version of <if>. Checks for the presence of something."
+  },
+  "if-…=\"…\"": {
+    "prefix": "onelineifvalue",
+    "body": "if-$1=\"$2\" true='$3' false='$4'",
+    "description": "One-line version of <if>. Checks the value of something."
   },
   "<loop …>": {
-    "prefix": "loop",
-    "body": "<loop through='$1' val='$2'>\n\t$3\n</loop>",
+    "prefix": [
+      "loop",
+      "<loop"
+    ],
+    "body": [
+      "<loop through=\"$1\" val=\"$2\">",
+      "\t$3",
+      "</loop>"
+    ],
     "description": "<loop> block. Loop through an array or object of data."
   },
   "<loop …> with key": {
-    "prefix": "loopkey",
-    "body": "<loop through='$1' key='$2' val='$3'>\n\t$4\n</loop>",
+    "prefix": [
+      "loopkey",
+      "<loopkey"
+    ],
+    "body": [
+      "<loop through=\"$1\" key=\"$2\" val=\"$3\">",
+      "\t$4",
+      "</loop>"
+    ],
     "description": "<loop> block with a key attribute. Loop through an array or object of data."
   },
+  "selected-value": {
+    "prefix": "selectedvalue",
+    "body": "selected-value=\"$1\"",
+    "description": "selected-value attribute. Select the matching <option> element in a <select> field."
+  },
+  "checked-value": {
+    "prefix": "checkedvalue",
+    "body": "checked-value=\"$1\"",
+    "description": "checked-value attribute. Check the matching checkbox or radio button."
+  },
+  "<noteddy>": {
+    "prefix": [
+      "noteddy",
+      "<noteddy"
+    ],
+    "body": "<noteddy>$1</noteddy>",
+    "description": "<noteddy> block. Skip parsing a block of code."
+  },
+  "<noparse>": {
+    "prefix": [
+      "noparse",
+      "<noparse"
+    ],
+    "body": "<noparse>$1</noparse>",
+    "description": "<noparse> block. Skip parsing a block of code."
+  },
+  "<pre parse>": {
+    "prefix": [
+      "preparse",
+      "<preparse"
+    ],
+    "body": [
+      "<pre parse>",
+      "\t$1",
+      "</pre>"
+    ],
+    "description": "<pre> block with a parse attribute. Parse a block of code that would otherwise be skipped."
+  },
   "<cache>": {
-    "prefix": "cache",
-    "body": "<cache name='$1'>\n\t$2\n</cache>",
+    "prefix": [
+      "cache",
+      "<cache"
+    ],
+    "body": [
+      "<cache name=\"$1\">",
+      "\t$2",
+      "</cache>"
+    ],
     "description": "<cache> block. Cache template partial."
   },
   "<cache> with key": {
-    "prefix": "cachekey",
-    "body": "<cache name='$1' key='$2'>\n\t$3\n</cache>",
+    "prefix": [
+      "cachekey",
+      "<cachekey"
+    ],
+    "body": [
+      "<cache name=\"$1\" key=\"$2\">",
+      "\t$3",
+      "</cache>"
+    ],
     "description": "<cache> block with a key attribute. Cache template partial."
   },
   "<cache> with maxAge": {
-    "prefix": "cachemaxage",
-    "body": "<cache name='$1' key='$2' maxAge='$3'>\n\t$4\n</cache>",
+    "prefix": [
+      "cachemaxage",
+      "<cachemaxage"
+    ],
+    "body": [
+      "<cache name=\"$1\" key=\"$2\" maxAge=\"$3\">",
+      "\t$4",
+      "</cache>"
+    ],
     "description": "<cache> block with key and maxAge attributes. Cache template partial."
   },
   "<cache> with maxCaches": {
-    "prefix": "cachemaxcaches",
-    "body": "<cache name='$1' key='$2' maxCaches='$3'>\n\t$4\n</cache>",
+    "prefix": [
+      "cachemaxcaches",
+      "<cachemaxcaches"
+    ],
+    "body": [
+      "<cache name=\"$1\" key=\"$2\" maxCaches=\"$3\">",
+      "\t$4",
+      "</cache>"
+    ],
     "description": "<cache> block with key and maxCaches attributes. Cache template partial."
   },
   "<cache> with everything": {
-    "prefix": "cacheall",
-    "body": "<cache name='$1' key='$2' maxAge='$3' maxCaches='$4'>\n\t$5\n</cache>",
+    "prefix": [
+      "cacheall",
+      "<cacheall"
+    ],
+    "body": [
+      "<cache name=\"$1\" key=\"$2\" maxAge=\"$3\" maxCaches=\"$4\">",
+      "\t$5",
+      "</cache>"
+    ],
     "description": "<cache> block with key, maxAge, and maxCaches attributes. Cache template partial."
   }
 }

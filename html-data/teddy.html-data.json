@@ -1,0 +1,227 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "include",
+      "description": {
+        "kind": "markdown",
+        "value": "Imports another template. The `.html` extension is optional; Teddy appends it for you.\n\nPass arguments with child `<arg>` elements.\n\n```html\n<include src=\"other-template\">\n  <arg firstArgument>Plain text argument</arg>\n</include>\n```\n\nWith an `as` attribute the template is rendered as a web component instead, inside the custom element you name. Any child that is not an `<arg>` then becomes that element's light DOM, which is what a `<slot>` in the component projects.\n\n```html\n<include src=\"productCard\" as=\"product-card\">\n  <arg name>Kettle</arg>\n  <p slot=\"description\">Boils water in under a minute.</p>\n</include>\n```"
+      },
+      "attributes": [
+        {
+          "name": "src",
+          "description": "Path to the template to import, relative to the template root. The `.html` extension is optional."
+        },
+        {
+          "name": "as",
+          "description": {
+            "kind": "markdown",
+            "value": "Renders the template as a web component inside the custom element named here, rather than in place of the include.\n\nThe name has to be one a custom element can have: lower case, and holding at least one hyphen. Teddy refuses anything else.\n\nEvery other attribute written on the include is put on the element it renders as, which is how a custom element is configured."
+          }
+        },
+        {
+          "name": "mode",
+          "description": {
+            "kind": "markdown",
+            "value": "Where the component's markup goes. Read only alongside `as`.\n\nThe fallback copy is the same template rendered again without its `<style>`, `<script>` and `<slot>` elements, none of which can do their job in the light DOM."
+          },
+          "values": [
+            {
+              "name": "both",
+              "description": "The default. A declarative shadow root and a fallback copy of it. Only one of the two is ever shown, so the component renders whatever the browser turns out to support, at the cost of writing the markup twice."
+            },
+            {
+              "name": "shadow",
+              "description": "The declarative shadow root alone. Smaller, but a browser without declarative shadow DOM support renders nothing at all, as does anything that reads HTML without being a browser."
+            },
+            {
+              "name": "light",
+              "description": "The fallback alone, written into the element's light DOM, with no shadow root. The element is still yours to upgrade, but nothing is encapsulated until you do it yourself."
+            }
+          ]
+        },
+        {
+          "name": "hydrate",
+          "description": {
+            "kind": "markdown",
+            "value": "Sends the component the part of the model it renders from, as JSON in a script beside its shadow root, so the class upgrading it can render the same template again from new data without asking a server for anything. Read only alongside `as`.\n\nNames whole model keys, comma separated, rather than paths into them. A bare `hydrate` is refused, as is a name holding a dot.\n\n```html\n<include src=\"productCard\" as=\"product-card\" hydrate=\"product\"></include>\n```"
+          }
+        }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#includes" }]
+    },
+    {
+      "name": "arg",
+      "description": {
+        "kind": "markdown",
+        "value": "Declares an argument passed to an included template. The argument name is the attribute name, and the element's contents are its value.\n\n```html\n<arg firstArgument>Plain text argument</arg>\n```\n\nThe child template reads it as `{firstArgument}`. Use the `|s` flag to render HTML in an argument: `{htmlArgument|s}`."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#includes" }]
+    },
+    {
+      "name": "if",
+      "description": {
+        "kind": "markdown",
+        "value": "Renders its contents when a condition passes.\n\n`<if something>` checks whether `something` is present in the model. `<if something=\"hello\">` checks its value.\n\nCombine conditions with the `and`, `or`, and `xor` attributes, or negate one with the `not:` prefix. Operators are evaluated left to right. A variable cannot be queried twice in one statement, and an operator cannot be used twice in one statement, because HTML forbids repeating an attribute on an element."
+      },
+      "attributes": [
+        { "name": "and", "description": "Renders if the preceding condition and this one are both true.", "valueSet": "v" },
+        { "name": "or", "description": "Renders if either the preceding condition or this one is true.", "valueSet": "v" },
+        { "name": "xor", "description": "Renders if exactly one of the preceding condition and this one is true.", "valueSet": "v" }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#conditionals" }]
+    },
+    {
+      "name": "unless",
+      "description": {
+        "kind": "markdown",
+        "value": "Renders its contents when a condition fails: the inverse of `<if>`.\n\n`<unless something>` renders when `something` is absent from the model."
+      },
+      "attributes": [
+        { "name": "and", "description": "Renders if the preceding condition and this one are both true.", "valueSet": "v" },
+        { "name": "or", "description": "Renders if either the preceding condition or this one is true.", "valueSet": "v" },
+        { "name": "xor", "description": "Renders if exactly one of the preceding condition and this one is true.", "valueSet": "v" }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#conditionals" }]
+    },
+    {
+      "name": "elseif",
+      "description": {
+        "kind": "markdown",
+        "value": "Evaluated when the preceding `<if>` fails. Takes the same conditions and boolean logic operators as `<if>`."
+      },
+      "attributes": [
+        { "name": "and", "description": "Renders if the preceding condition and this one are both true.", "valueSet": "v" },
+        { "name": "or", "description": "Renders if either the preceding condition or this one is true.", "valueSet": "v" },
+        { "name": "xor", "description": "Renders if exactly one of the preceding condition and this one is true.", "valueSet": "v" }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#conditionals" }]
+    },
+    {
+      "name": "elseunless",
+      "description": {
+        "kind": "markdown",
+        "value": "Evaluated when the preceding `<unless>` fails. Takes the same conditions and boolean logic operators as `<unless>`."
+      },
+      "attributes": [
+        { "name": "and", "description": "Renders if the preceding condition and this one are both true.", "valueSet": "v" },
+        { "name": "or", "description": "Renders if either the preceding condition or this one is true.", "valueSet": "v" },
+        { "name": "xor", "description": "Renders if exactly one of the preceding condition and this one is true.", "valueSet": "v" }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#conditionals" }]
+    },
+    {
+      "name": "else",
+      "description": {
+        "kind": "markdown",
+        "value": "Renders when every preceding `<if>`, `<elseif>`, `<unless>`, or `<elseunless>` in the chain fails. Takes no conditions of its own."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#conditionals" }]
+    },
+    {
+      "name": "loop",
+      "description": {
+        "kind": "markdown",
+        "value": "Iterates over an array or object in the model.\n\n```html\n<loop through=\"names\" key=\"name\" val=\"description\">\n  <p>{name}: {description}</p>\n</loop>\n```"
+      },
+      "attributes": [
+        { "name": "through", "description": "The model property to iterate over. Accepts an array or an object." },
+        { "name": "val", "description": "Name of the local variable holding the current value." },
+        { "name": "key", "description": "Name of the local variable holding the current key or array index. Optional." }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#loops" }]
+    },
+    {
+      "name": "cache",
+      "description": {
+        "kind": "markdown",
+        "value": "Caches a block of template code that resolves to the same markup often, so Teddy does not re-render it on every pass.\n\n```html\n<cache name=\"weather\" key=\"city\" maxCaches=\"3\">\n  <p>High today in {city} is {value}.</p>\n</cache>\n```"
+      },
+      "attributes": [
+        { "name": "name", "description": "Name of the cache, so it can be cleared from JavaScript with `teddy.clearCache(name)`." },
+        { "name": "key", "description": "The model property used to index new caches." },
+        { "name": "maxAge", "description": "How old a cache may get, in milliseconds, before it is invalidated and re-rendered. Default: `0`, meaning no limit." },
+        { "name": "maxCaches", "description": "The maximum number of caches for this element. When the maximum is reached the least recently created or accessed cache is dropped. Default: `1000`." }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#cacheblocks" }]
+    },
+    {
+      "name": "noteddy",
+      "description": {
+        "kind": "markdown",
+        "value": "Skips Teddy parsing for its contents.\n\n```html\n<p><noteddy>{this_will_not_be_parsed}</noteddy></p>\n```\n\nTeddy also skips `<style>`, `<script>`, and `<textarea>` automatically, and skips `<pre>` unless it carries a `parse` attribute."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#noparseblocks" }]
+    },
+    {
+      "name": "noparse",
+      "description": {
+        "kind": "markdown",
+        "value": "Skips Teddy parsing for its contents. A synonym for `<noteddy>`."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#noparseblocks" }]
+    },
+    {
+      "name": "escape",
+      "description": {
+        "kind": "markdown",
+        "value": "Renders its contents as text rather than markup, escaping HTML entities.\n\n```html\n<escape><p>hello</p></escape>\n```\n\nOutputs `&lt;p&gt;hello&lt;/p&gt;`. An escape comment, `<!--#<p>hello</p>-->`, does the same thing."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#varescape" }]
+    },
+    {
+      "name": "inline",
+      "description": {
+        "kind": "markdown",
+        "value": "Renders a variable's contents as inline CSS or JS.\n\n```html\n<inline css=\"inlineStyles\"></inline>\n<inline js=\"inlineScript\"></inline>\n```\n\nEquivalent to writing `<style>{inlineStyles|s}</style>` or `<script>{inlineScript|s}</script>`, but without making code editors report a syntax error."
+      },
+      "attributes": [
+        { "name": "css", "description": "Name of the model property holding CSS to render inline." },
+        { "name": "js", "description": "Name of the model property holding JS to render inline." }
+      ],
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#inlinecode" }]
+    }
+  ],
+  "globalAttributes": [
+    {
+      "name": "selected-value",
+      "description": {
+        "kind": "markdown",
+        "value": "Adds `selected` to the descendant `<option>` whose `value` matches.\n\n```html\n<select selected-value=\"b\">\n  <option value=\"a\">A</option>\n  <option value=\"b\">B</option>\n</select>\n```"
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#selecteditems" }]
+    },
+    {
+      "name": "checked-value",
+      "description": {
+        "kind": "markdown",
+        "value": "Adds `checked` to the descendant checkbox or radio button whose `value` matches. May appear more than once to check several inputs, and accepts a Teddy variable as its value.\n\n```html\n<div checked-value=\"b\">\n  <input type=\"checkbox\" name=\"letters\" value=\"a\">\n  <input type=\"checkbox\" name=\"letters\" value=\"b\">\n</div>\n```"
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#selecteditems" }]
+    },
+    {
+      "name": "true",
+      "description": {
+        "kind": "markdown",
+        "value": "The attributes written to the element when a one-line `if-*` condition passes.\n\n```html\n<p if-something true='class=\"shown\"' false='class=\"hidden\"'>One-line if.</p>\n```\n\nWhichever quotes wrap this attribute must be the reverse of the quotes used inside it."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#onelineifs" }]
+    },
+    {
+      "name": "false",
+      "description": {
+        "kind": "markdown",
+        "value": "The attributes written to the element when a one-line `if-*` condition fails.\n\n```html\n<p if-something true='class=\"shown\"' false='class=\"hidden\"'>One-line if.</p>\n```\n\nWhichever quotes wrap this attribute must be the reverse of the quotes used inside it."
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#onelineifs" }]
+    },
+    {
+      "name": "parse",
+      "description": {
+        "kind": "markdown",
+        "value": "Opts a `<pre>` element into Teddy parsing, which it is otherwise skipped for.\n\n```html\n<pre parse>{thisWillBeParsed}</pre>\n```"
+      },
+      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#noparseblocks" }]
+    }
+  ]
+}

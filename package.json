@@ -9,16 +9,17 @@
       "url": "https://github.com/rooseveltframework/vscode-teddy/graphs/contributors"
     }
   ],
-  "version": "1.0.2",
+  "version": "2.0.0",
   "publisher": "RooseveltFrameworkTeam",
   "engines": {
-    "vscode": "^1.20.0"
+    "vscode": "^1.75.0"
   },
   "homepage": "https://rooseveltframework.org/docs/teddy/latest",
   "license": "CC-BY-4.0",
   "icon": "icon.png",
   "categories": [
-    "Snippets"
+    "Snippets",
+    "Programming Languages"
   ],
   "contributes": {
     "snippets": [
@@ -26,19 +27,48 @@
         "language": "html",
         "path": "./snippets/teddy.json"
       }
-    ]
+    ],
+    "grammars": [
+      {
+        "scopeName": "text.html.teddy.injection",
+        "path": "./syntaxes/teddy.injection.json",
+        "injectTo": [
+          "text.html.basic",
+          "text.html.derivative"
+        ]
+      }
+    ],
+    "html": {
+      "customData": [
+        "./html-data/teddy.html-data.json"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "node --test \"test/unit/*.test.js\"",
+    "coverage": "node --test --experimental-test-coverage \"test/unit/*.test.js\"",
+    "test-vscode": "node test/runVscodeTests.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
   },
   "devDependencies": {
-    "@vscode/vsce": "2.29.0"
+    "@vscode/test-electron": "3.1.0",
+    "@vscode/vsce": "4.0.0",
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/rooseveltframework/vscode-teddy.git"
   },
+  "bugs": {
+    "url": "https://github.com/rooseveltframework/vscode-teddy/issues"
+  },
   "keywords": [
     "Teddy",
     "HTML",
     "snippets",
+    "intellisense",
     "teddy.js",
     "node.js",
     "template",

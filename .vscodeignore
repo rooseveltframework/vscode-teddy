@@ -1,3 +1,13 @@
+.git/**
+.github/**
 .vscode/**
 .vscode-test/**
+.gitattributes
 .gitignore
+.vscodeignore
+package-lock.json
+CONTRIBUTING.md
+renovate.json
+scripts/**
+test/**
+*.vsix
