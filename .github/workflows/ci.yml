@@ -1,0 +1,47 @@
+on: [push, pull_request]
+name: CI
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # show all CI failures rather than stopping CI on first failure
+      matrix:
+        node-version: [22.x, 24.x, 26.x]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm t
+      - run: npm run package # packaging is a smoke test of the manifest itself
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+      - run: npm ci
+      - run: npm run coverage
+
+  test-vscode:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+      - run: npm ci
+
+      # this suite downloads and drives a real VS Code, so it runs once rather than across the node matrix, and needs a display on a headless runner
+      - name: Run tests in VS Code
+        run: xvfb-run -a npm run test-vscode

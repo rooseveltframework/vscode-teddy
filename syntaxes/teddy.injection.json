@@ -1,0 +1,18 @@
+{
+  "scopeName": "text.html.teddy.injection",
+  "injectionSelector": "L:text.html -comment -string",
+  "patterns": [
+    { "include": "#teddy-comment" }
+  ],
+  "repository": {
+    "teddy-comment": {
+      "name": "comment.block.teddy.html",
+      "description": "Teddy server-side comment. The <!--! --> form is already highlighted as an HTML comment, so only the curly bracket form needs injecting.",
+      "begin": "\\{!",
+      "end": "!\\}",
+      "captures": {
+        "0": { "name": "punctuation.definition.comment.teddy.html" }
+      }
+    }
+  }
+}
