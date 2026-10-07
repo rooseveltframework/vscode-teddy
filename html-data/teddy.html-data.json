@@ -132,20 +132,6 @@
       "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#loops" }]
     },
     {
-      "name": "cache",
-      "description": {
-        "kind": "markdown",
-        "value": "Caches a block of template code that resolves to the same markup often, so Teddy does not re-render it on every pass.\n\n```html\n<cache name=\"weather\" key=\"city\" maxCaches=\"3\">\n  <p>High today in {city} is {value}.</p>\n</cache>\n```"
-      },
-      "attributes": [
-        { "name": "name", "description": "Name of the cache, so it can be cleared from JavaScript with `teddy.clearCache(name)`." },
-        { "name": "key", "description": "The model property used to index new caches." },
-        { "name": "maxAge", "description": "How old a cache may get, in milliseconds, before it is invalidated and re-rendered. Default: `0`, meaning no limit." },
-        { "name": "maxCaches", "description": "The maximum number of caches for this element. When the maximum is reached the least recently created or accessed cache is dropped. Default: `1000`." }
-      ],
-      "references": [{ "name": "Teddy documentation", "url": "https://rooseveltframework.org/docs/teddy/latest/usage#cacheblocks" }]
-    },
-    {
       "name": "noteddy",
       "description": {
         "kind": "markdown",

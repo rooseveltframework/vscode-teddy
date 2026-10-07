@@ -1,3 +1,8 @@
+## 2.1.0
+
+- Breaking: Removed the `<cache>` snippets (`cache`, `cachekey`, `cachemaxage`, `cachemaxcaches`, and `cacheall`) and the `<cache>` IntelliSense, since Teddy has removed the `<cache>` element.
+- Updated dependencies.
+
 ## 2.0.0
 
 - Breaking: Bumped minimum supported Visual Studio Code version to 1.75.

@@ -9,7 +9,7 @@
       "url": "https://github.com/rooseveltframework/vscode-teddy/graphs/contributors"
     }
   ],
-  "version": "2.0.0",
+  "version": "2.1.0",
   "publisher": "RooseveltFrameworkTeam",
   "engines": {
     "vscode": "^1.75.0"
