@@ -83,7 +83,6 @@ suite('snippets', () => {
     const expected = {
       '<loop': '<loop through="" val="">',
       '<include': '<include src=""></include>',
-      '<cache': '<cache name="">',
       '<arg': '<arg ></arg>',
       '<inlinecss': '<inline css=""></inline>',
       '<preparse': '<pre parse>'

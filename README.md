@@ -86,15 +86,10 @@ Type a prefix and press <kbd>Tab</kbd>. Element snippets also accept a leading `
 
 | Prefix | Inserts |
 | --- | --- |
-| `cache` | `<cache>` block |
-| `cachekey` | `<cache>` block with a `key` attribute |
-| `cachemaxage` | `<cache>` block with `key` and `maxAge` attributes |
-| `cachemaxcaches` | `<cache>` block with `key` and `maxCaches` attributes |
-| `cacheall` | `<cache>` block with `key`, `maxAge`, and `maxCaches` attributes |
 
 ## IntelliSense
 
-Teddy's tags and attributes are registered with Visual Studio Code's HTML language service, so `<include>`, `<arg>`, `<if>`, `<elseif>`, `<else>`, `<unless>`, `<elseunless>`, `<loop>`, `<cache>`, `<noteddy>`, `<noparse>`, `<escape>`, and `<inline>` autocomplete and document themselves on hover, along with their attributes and the `selected-value`, `checked-value`, `true`, `false`, and `parse` attributes.
+Teddy's tags and attributes are registered with Visual Studio Code's HTML language service, so `<include>`, `<arg>`, `<if>`, `<elseif>`, `<else>`, `<unless>`, `<elseunless>`, `<loop>`, `<noteddy>`, `<noparse>`, `<escape>`, and `<inline>` autocomplete and document themselves on hover, along with their attributes and the `selected-value`, `checked-value`, `true`, `false`, and `parse` attributes.
 
 `<include>` carries the attributes that make it a web component: `as` names the custom element to render into, `hydrate` names the model keys the component is sent, and `mode` says where its markup goes. The three values `mode` accepts (`both`, `shadow`, and `light`) are completed and documented individually.
 
