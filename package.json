@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@vscode/test-electron": "3.1.0",
-    "@vscode/vsce": "4.0.0",
+    "@vscode/vsce": "4.1.0",
     "vscode-oniguruma": "2.0.1",
     "vscode-textmate": "9.3.2"
   },
