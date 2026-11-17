@@ -27,7 +27,7 @@ jobs:
           lfs: true
       - uses: actions/setup-node@v7
         with:
-          node-version: 24.x
+          node-version: 26.x
       - run: npm ci
       - run: npm run coverage
 
@@ -39,7 +39,7 @@ jobs:
           lfs: true
       - uses: actions/setup-node@v7
         with:
-          node-version: 24.x
+          node-version: 26.x
       - run: npm ci
 
       # this suite downloads and drives a real VS Code, so it runs once rather than across the node matrix, and needs a display on a headless runner
